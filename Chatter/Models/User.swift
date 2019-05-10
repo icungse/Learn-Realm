@@ -38,12 +38,25 @@ func imageUrlForName(_ name: String) -> URL {
 class User: Object {
 
   // MARK: - Init
+    convenience init(name: String) {
+        self.init()
+        self.name = name
+    }
 
 
   // MARK: - Properties
+    @objc dynamic var name = ""
+    @objc dynamic var sent = 0
+    
+    var avatarUrl: URL {
+        return imageUrlForName(self.name)
+    }
 
 
   // MARK: - Meta
+    override static func primaryKey() -> String? {
+        return "name"
+    }
 
 
   // MARK: - Etc

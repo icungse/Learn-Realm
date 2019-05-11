@@ -38,6 +38,9 @@ class FeedTableViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let realm = try! Realm()
+    User.defaultUser(in: realm)
 
     dataController = DataController(api: StubbedChatterAPI())
     dataController.startFetchingMessages()
